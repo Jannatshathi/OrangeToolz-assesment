@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/task',[TaskController::class,'index'])->name('task');
+Route::post('/add',[TaskController::class,'store'])->name('store');
+
