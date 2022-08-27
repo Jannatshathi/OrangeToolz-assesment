@@ -18,4 +18,12 @@ class TaskController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function update(Request $request, $id){
+        $task = Task::find($id);
+        $task->update([
+            'task' => $request->task,
+        ]);
+        return redirect()->back();
+    }
 }

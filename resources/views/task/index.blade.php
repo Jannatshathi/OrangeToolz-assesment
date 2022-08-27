@@ -26,48 +26,48 @@
                     </div>
                 </div>
             </div>
-            
-            
         </div>
     </div>
     <br>
     <div>
         <div class="container">
             <div class="row">
-                {{-- <div class="col-md-4"></div> --}}
-                <div class="col-md-4">
+                <div class="col-4">
                     <div class="card text-center">
                         <div class="card-header">
-                            <div class="card">To do</div>   
+                            <div class="card">To do</div>
+                            <div class="card-body">
+                                
+                                 @foreach ($task->where('status','todo') as $t)
+                                <div class=" text-center">
+                                    {{$t->task}} 
+                                    <select name="" id="">
+                                        <option value="{{route('update',$t->id)}}"><a href="/home"> In progress     </a> </option>
+                                        <option value="">Done</option>
+                                    </select>
+                                </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
-                @foreach ($task as $t)
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="text-center">
-                        <div class="card-header">
-                            
-                            {{-- <div class="card-body">
-                                <div class=" text-center"> --}}
-                                   {{$t->task}}
-                                {{-- </div>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
-                @endforeach
                 
                 <div class="col-4">
                     <div class="card text-center">
                         <div class="card-header">
                             <div class="card">In Progress</div>
+
                             <div class="card-body">
+
+                                @foreach ($task->where('status','inprogress') as $t)
                                 <div class=" text-center">
-                                    Task 02
+                                    {{$t->task}} 
+                                    <select name="" id="">
+                                        <option value="">To do</option>
+                                        <option value="">Done</option>
+                                    </select>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -77,9 +77,16 @@
                         <div class="card-header">
                             <div class="card">Done</div>
                             <div class="card-body">
+
+                                 @foreach ($task->where('status','done') as $t)
                                 <div class=" text-center">
-                                   Task 03
+                                    {{$t->task}} 
+                                    <select name="" id="">
+                                        <option value="">To do</option>
+                                        <option value="">In Progress</option>
+                                    </select>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
